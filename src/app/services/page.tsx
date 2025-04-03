@@ -1,6 +1,7 @@
 // app/services/page.tsx
-import { Shield, Terminal, Code, Globe, Lock, Server, Database, FileText, Users, ChevronRight } from 'lucide-react';
+import { Shield, Code, Globe, Lock, Server, Database, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
 export default function Services() {
   return (
@@ -164,7 +165,7 @@ export default function Services() {
                 
                 <DifferentiatorItem 
                   title="Practical Remediation Guidance"
-                  description="My reports don't just identify problems—they provide clear, actionable recommendations for fixing vulnerabilities, with consideration for your technical environment and resource constraints."
+                  description="My reports don&apos;t just identify problems—they provide clear, actionable recommendations for fixing vulnerabilities, with consideration for your technical environment and resource constraints."
                 />
                 
                 <DifferentiatorItem 
@@ -237,7 +238,7 @@ export default function Services() {
         <div className="text-center">
           <h2 className="text-3xl font-bold mb-6 text-white">Ready to Secure Your Systems?</h2>
           <p className="text-xl mb-8 text-gray-400 max-w-3xl mx-auto">
-            Let's discuss your security needs and how I can help protect your organization from cyber threats.
+            Let&apos;s discuss your security needs and how I can help protect your organization from cyber threats.
           </p>
           <Link 
             href="/contact" 
@@ -251,7 +252,14 @@ export default function Services() {
   );
 }
 
-function ServiceCard({ icon, title, description, features }) {
+interface ServiceCardProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  features: string[];
+}
+
+function ServiceCard({ icon, title, description, features }: ServiceCardProps) {
   return (
     <div className="border border-green-800 rounded-lg p-6 hover:bg-green-900/20 transition-colors">
       <div className="text-green-500 mb-4">{icon}</div>
@@ -270,7 +278,13 @@ function ServiceCard({ icon, title, description, features }) {
   );
 }
 
-function MethodologyStep({ number, title, description }) {
+interface MethodologyStepProps {
+  number: string | number;
+  title: string;
+  description: string;
+}
+
+function MethodologyStep({ number, title, description }: MethodologyStepProps) {
   return (
     <div className="flex">
       <div className="mr-4">
@@ -284,7 +298,12 @@ function MethodologyStep({ number, title, description }) {
   );
 }
 
-function DifferentiatorItem({ title, description }) {
+interface DifferentiatorItemProps {
+  title: string;
+  description: string;
+}
+
+function DifferentiatorItem({ title, description }: DifferentiatorItemProps) {
   return (
     <div>
       <h4 className="text-lg font-bold mb-2 text-green-400">{title}</h4>
@@ -293,7 +312,15 @@ function DifferentiatorItem({ title, description }) {
   );
 }
 
-function PackageCard({ name, price, description, features, recommended }) {
+interface PackageCardProps {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  recommended: boolean;
+}
+
+function PackageCard({ name, price, description, features, recommended }: PackageCardProps) {
   return (
     <div className={`border ${recommended ? 'border-green-500' : 'border-green-800'} rounded-lg p-6 ${recommended ? 'bg-green-900/30' : ''} relative`}>
       {recommended && (

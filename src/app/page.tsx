@@ -1,6 +1,6 @@
 // app/page.tsx
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import Link from 'next/link';
 import { Shield, Terminal, Code, Globe, Lock, ChevronRight } from 'lucide-react';
 
@@ -116,7 +116,7 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4 text-white">Ready to secure your systems?</h2>
           <p className="text-lg mb-8 text-gray-200 max-w-2xl mx-auto">
-            Let's work together to identify and address your security vulnerabilities before they become problems.
+            Let&apos;s work together to identify and address your security vulnerabilities before they become problems.
           </p>
           <Link href="/contact" className="bg-black hover:bg-gray-900 text-green-500 font-bold py-3 px-8 rounded inline-flex items-center">
             Get in Touch <ChevronRight className="ml-2" size={20} />
@@ -127,7 +127,13 @@ export default function Home() {
   );
 }
 
-function ServiceCard({ icon, title, description }) {
+interface ServiceCardProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+function ServiceCard({ icon, title, description }: ServiceCardProps) {
   return (
     <div className="p-6 border border-green-800 rounded-lg hover:bg-green-900/20 transition duration-300">
       <div className="text-green-500 mb-4">{icon}</div>
@@ -137,7 +143,13 @@ function ServiceCard({ icon, title, description }) {
   );
 }
 
-function ProjectCard({ title, description, tags }) {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  tags: string[];
+}
+
+function ProjectCard({ title, description, tags }: ProjectCardProps) {
   return (
     <div className="p-6 border border-green-800 rounded-lg hover:bg-green-900/20 transition duration-300">
       <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>

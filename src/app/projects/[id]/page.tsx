@@ -409,7 +409,7 @@ export default function ProjectPage() {
     // Simulate API call with setTimeout
     setTimeout(() => {
       // Find the project that matches the ID from URL params
-      const foundProject = projectsData.find(project => project.id === projectId) as Project | undefined;
+      const foundProject = projectsData.find(project => project.id === projectId);
       setProject(foundProject || null);
 
       if (foundProject && foundProject.relatedProjects) {
@@ -451,7 +451,7 @@ export default function ProjectPage() {
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-white mb-4">Project Not Found</h1>
-            <p className="mb-6">Sorry, the project you're looking for doesn't exist or has been removed.</p>
+            <p className="mb-6">Sorry, the project you&apos;re looking for doesn&apos;t exist or has been removed.</p>
             <Link href="/projects" className="text-green-500 hover:text-green-400 flex items-center justify-center">
               <ArrowLeft className="mr-2" size={20} />
               Back to Projects

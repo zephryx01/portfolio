@@ -1,6 +1,7 @@
 // app/about/page.tsx
 import Image from 'next/image';
 import { Shield, Award, Book, FileText } from 'lucide-react';
+import { ReactNode } from 'react';
 
 export default function About() {
   return (
@@ -61,7 +62,7 @@ export default function About() {
 
             </p>
             <p className="text-gray-300 mb-4">
-            As technology evolves, so do cyber threats. That’s why I stay ahead by continuously researching new attack techniques, security trends, and defense strategies. My goal is to empower individuals and organizations with the knowledge and tools needed to stay secure in an ever-changing digital world.
+            As technology evolves, so do cyber threats. That&apos;s why I stay ahead by continuously researching new attack techniques, security trends, and defense strategies. My goal is to empower individuals and organizations with the knowledge and tools needed to stay secure in an ever-changing digital world.
             </p>
           </div>
         </div>
@@ -190,7 +191,12 @@ export default function About() {
   );
 }
 
-function SkillCard({ category, skills }) {
+interface SkillCardProps {
+  category: string;
+  skills: string[];
+}
+
+function SkillCard({ category, skills }: SkillCardProps) {
   return (
     <div className="p-6 border border-green-800 rounded-lg hover:bg-green-900/20 transition duration-300">
       <h3 className="text-xl font-bold mb-4 text-white">{category}</h3>
@@ -206,7 +212,14 @@ function SkillCard({ category, skills }) {
   );
 }
 
-function CertificationCard({ title, organization, year, icon }) {
+interface CertificationCardProps {
+  title: string;
+  organization: string;
+  year: string;
+  icon: ReactNode;
+}
+
+function CertificationCard({ title, organization, year, icon }: CertificationCardProps) {
   return (
     <div className="p-6 border border-green-800 rounded-lg hover:bg-green-900/20 transition duration-300">
       <div className="flex items-center mb-4">
@@ -219,7 +232,14 @@ function CertificationCard({ title, organization, year, icon }) {
   );
 }
 
-function TimelineItem({ year, title, description, left }) {
+interface TimelineItemProps {
+  year: string;
+  title: string;
+  description: string;
+  left: boolean;
+}
+
+function TimelineItem({ year, title, description, left }: TimelineItemProps) {
   return (
     <div className={`relative flex items-center ${left ? 'flex-row-reverse md:flex-row' : 'flex-row-reverse'} gap-8`}>
       <div className="md:w-1/2 w-5/6">

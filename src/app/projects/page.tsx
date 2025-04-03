@@ -258,8 +258,8 @@ export default function Projects() {
         <div className="text-center">
           <h2 className="text-3xl font-bold mb-6 text-white">Need a Security Assessment?</h2>
           <p className="text-xl mb-8 text-gray-400 max-w-3xl mx-auto">
-            I offer comprehensive security assessment services tailored to your organization's specific needs. 
-            Let's work together to identify and address your security vulnerabilities.
+            I offer comprehensive security assessment services tailored to your organization&apos;s specific needs. 
+            Let&apos;s work together to identify and address your security vulnerabilities.
           </p>
           <Link 
             href="/contact" 

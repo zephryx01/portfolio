@@ -5,8 +5,21 @@ import Link from 'next/link';
 import { Calendar, User, Clock, ArrowLeft, Share2, Bookmark, ThumbsUp } from 'lucide-react';
 import { useParams } from 'next/navigation';
 
+// Define TypeScript interface for BlogPost structure
+interface BlogPost {
+  id: string;
+  title: string;
+  content: string;
+  date: string;
+  author: string;
+  readTime: string;
+  tags: string[];
+  relatedPosts: string[];
+  featured?: boolean;
+}
+
 // Sample blog posts data - this would be replaced with your actual data fetching logic
-const blogPosts = [
+const blogPosts: BlogPost[] = [
   {
     id: "1",
     title: "Uncovering a Critical XSS Vulnerability in Popular E-commerce Platform",
@@ -89,7 +102,8 @@ For developers building web applications, this serves as a reminder to implement
     author: "Zephryx",
     readTime: "8 min read",
     tags: ["Web Security", "XSS", "Bug Bounty"],
-    relatedPosts: ["2", "3"]
+    relatedPosts: ["2", "3"],
+    featured: true
   },
   {
     id: "2",
@@ -174,7 +188,8 @@ Remember: Your security perimeter now extends far beyond your organization's bou
     author: "Zephryx",
     readTime: "6 min read",
     tags: ["Supply Chain", "Risk Management", "Cybersecurity"],
-    relatedPosts: ["1", "5"]
+    relatedPosts: ["1", "5"],
+    featured: true
   },
   {
     id: "3",
@@ -184,7 +199,8 @@ Remember: Your security perimeter now extends far beyond your organization's bou
     author: "Zephryx",
     readTime: "12 min read",
     tags: ["OWASP", "Web Security", "Best Practices"],
-    relatedPosts: ["1", "4"]
+    relatedPosts: ["1", "4"],
+    featured: true
   },
   {
     id: "4",
@@ -194,7 +210,8 @@ Remember: Your security perimeter now extends far beyond your organization's bou
     author: "Zephryx",
     readTime: "7 min read",
     tags: ["API Security", "Microservices", "OAuth"],
-    relatedPosts: ["3", "5"]
+    relatedPosts: ["3", "5"],
+    featured: true
   },
   {
     id: "5",
@@ -204,16 +221,17 @@ Remember: Your security perimeter now extends far beyond your organization's bou
     author: "Zephryx",
     readTime: "9 min read",
     tags: ["Threat Hunting", "SOC", "Security Monitoring"],
-    relatedPosts: ["2", "4"]
+    relatedPosts: ["2", "4"],
+    featured: true
   }
 ];
 
 export default function BlogPost() {
   const params = useParams();
-  const postId = params.id;
+  const postId = params.id as string;
 
-  const [post, setPost] = useState(null);
-  const [relatedPosts, setRelatedPosts] = useState([]);
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
@@ -225,7 +243,7 @@ export default function BlogPost() {
     setTimeout(() => {
       // Find the post that matches the ID from URL params
       const foundPost = blogPosts.find(post => post.id === postId);
-      setPost(foundPost);
+      setPost(foundPost || null);
 
       if (foundPost && foundPost.relatedPosts) {
         const related = blogPosts.filter(p => foundPost.relatedPosts.includes(p.id));
@@ -244,7 +262,7 @@ export default function BlogPost() {
     }, 2000);
   };
 
-  const renderContent = (content) => {
+  const renderContent = (content: string) => {
     // This is a simple markdown renderer for our sample content
     // In a real application, you would use a proper markdown library
     const formattedContent = content
@@ -272,7 +290,7 @@ export default function BlogPost() {
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-white mb-4">Blog Post Not Found</h1>
-            <p className="mb-6">Sorry, the article you're looking for doesn't exist or has been removed.</p>
+            <p className="mb-6">Sorry, the article you&apos;re looking for doesn&apos;t exist or has been removed.</p>
             <Link href="/blog" className="text-green-500 hover:text-green-400 flex items-center justify-center">
               <ArrowLeft className="mr-2" size={20} />
               Back to Blog
