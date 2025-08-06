@@ -146,7 +146,7 @@ export default function Contact() {
                 <Mail className="mr-4 text-green-500" size={24} />
                 <div>
                   <h3 className="font-bold text-white mb-1">Email</h3>
-                  <p>contact@zephryx-security.com</p>
+                  <p>zephryx01@gmail.com</p>
                 </div>
               </div>
               
@@ -154,7 +154,7 @@ export default function Contact() {
                 <Phone className="mr-4 text-green-500" size={24} />
                 <div>
                   <h3 className="font-bold text-white mb-1">Phone</h3>
-                  <p>+1 (555) 123-4567</p>
+                  <p>+91 8527540198</p>
                 </div>
               </div>
               
@@ -162,7 +162,7 @@ export default function Contact() {
                 <MapPin className="mr-4 text-green-500" size={24} />
                 <div>
                   <h3 className="font-bold text-white mb-1">Location</h3>
-                  <p>San Francisco, CA</p>
+                  <p>New Delhi, Delh, India</p>
                 </div>
               </div>
             </div>
